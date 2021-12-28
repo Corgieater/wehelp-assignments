@@ -55,7 +55,7 @@ body{
 .wrap{
     margin:0 auto;
     width: 100%;
-    max-width: 1400px;
+    max-width: 100%;
 }
 
 
@@ -149,7 +149,7 @@ a{
 
 .card > img{
     width:100%;
-    max-width: 100%;  /*preventing pics go wider 這整個看起來有下沒下都沒差?*/
+    max-width: 100%;  /*preventing pics go wider*/
 }
 
 .discription{
@@ -157,17 +157,6 @@ a{
     line-height: 2;
     text-align:center;
     background-color:mediumaquamarine;
-}
-
-
-@media screen and (min-width:600px) and (max-width:1200px){
-    .main > ul{
-        width:90%;
-        margin:0 auto;
-    }
-    .main > ul >li{
-        width:45%;
-    }
 }
 
 @media screen and (min-width:360px) and (max-width:600px){
@@ -226,6 +215,14 @@ a{
         left:0;
         right:0;
     }
-    
+}
 
+@media screen and (min-width:600px) and (max-width:1400px){
+    .main > ul{
+        width:90%;
+        margin:0 auto;
+    }
+    .main > ul >li{
+        width:45%;
+    }
 }
