@@ -43,6 +43,10 @@ table {
 }
 /* CSS reset */
 
+*{
+    box-sizing: border-box;
+}
+
 body{
     background-color: antiquewhite;
     font-size:20px;
@@ -65,14 +69,42 @@ nav{
     font-weight: bold;
 }
 
-.menu>ul{
+.list_holder{
     list-style: none;
     display:flex;
     justify-content: space-between;
 }
-.menu>ul>li{
-   padding:0 10px;
+.list_holder > li{
+   padding:0 0 0 30px;
 }
+
+.fake_list{
+    display:none;
+    background-color: darksalmon;
+    position: absolute;
+    margin: 10px 0;
+}
+
+.appear{
+    display:block;
+}
+
+.fake_list{
+    width:200px;
+    border:1px black solid;
+}
+
+.fake_list > li{
+    padding:20px;
+    border:2px black dotted;
+    
+}
+
+a{
+    font-weight: bold;
+    text-decoration: none;
+}
+
 
 .burger{
     display:none;
@@ -83,40 +115,41 @@ nav{
     height:300px;
     background-color:darkseagreen;
     font-weight: bold;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 
-.banner>h2{
+.banner>h2, .banner>p{
     font-size: 2em;
     text-align: center;
-    line-height: 7;
 }
 
 
 .main{
     margin:20px auto;
-    max-width:1200px;
+    max-width:1200px;  /* limiting it under 1200px even the viewport is bigger */
 }
 
 .main > ul {
     display:flex;
     justify-content:center;
     flex-wrap: wrap;
-    
 }
 
-.card{
+.card{ 
     display:flex;
     flex-direction: column;
 }
 .main > ul >li{
     padding:10px;
-    width:20%;
+    width:25%;  /*using li for controling the img size*/
 }
 
 .card > img{
     width:100%;
-    max-width: 100%;
+    max-width: 100%;  /*preventing pics go wider 這整個看起來有下沒下都沒差?*/
 }
 
 .discription{
@@ -135,24 +168,25 @@ nav{
     .main > ul >li{
         width:45%;
     }
-    
 }
 
 @media screen and (min-width:360px) and (max-width:600px){
     nav{
         height:2.5em;
+        margin-bottom: 10px;
     }
     .logo > p{
         font-size: 1.5em;
         line-height: 1.5;
     }
 
-    .menu > ul{
+    .list_holder{
         display:none;
     }
 
     .burger{
         display:block;
+
     }
 
     .main > ul{
@@ -165,7 +199,34 @@ nav{
         padding:5px;
         width:100%;
     }
+
+    .list_holder{
+        width:100%;
+        min-width: 360px;
+        max-width: 600px;
+        height:200px;
+        position:absolute;     /*position, left0, right0 滿版關鍵!!*/
+        left:0;
+        right:0;
+        background-color:antiquewhite;
+    }
+    .list_holder > li{
+        width:100%;
+        font-size:1.5em;
+        padding:10px;
+        /* 加入一些東東虛線等等讓差別做出來 把realA的假清單滿版做好*/
+    }
     
+    .show_list{
+        display:block;
+    }
+    .fake_list{
+        width:100%;
+        max-width:100%;
+        position:absolute;
+        left:0;
+        right:0;
+    }
     
 
 }
