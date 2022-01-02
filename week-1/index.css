@@ -83,15 +83,12 @@ nav{
     background-color: darksalmon;
     position: absolute;
     margin: 10px 0;
+    width:200px;
+    border:1px black solid;
 }
 
 .appear{
     display:block;
-}
-
-.fake_list{
-    width:200px;
-    border:1px black solid;
 }
 
 .fake_list > li{
