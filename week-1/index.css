@@ -93,8 +93,7 @@ nav{
 
 .fake_list > li{
     padding:20px;
-    border:2px black dotted;
-    
+    border:2px black dashed;
 }
 
 a{
