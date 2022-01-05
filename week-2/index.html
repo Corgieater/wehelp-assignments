@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function calculate(min, max){
+    let total = 0;
+    for(let i =min; i<=max; i++){
+        total += i;
+    }
+    return total;
+}
+console.log(calculate(1, 3));
+console.log(calculate(4, 8));
+
+
+function avg(data){
+const employees = data.employees;
+let count = employees.length;
+let total = 0;
+if (data.count != count){
+    data.count = count;
+}
+for (let i =0; i < count; i++){
+    total += employees[i].salary;
+}
+console.log(total/count);
+}
+
+avg({
+"count":3,
+"employees":[
+{
+"name":"John",
+"salary":30000
+},
+{
+"name":"Bob",
+"salary":60000
+},
+{
+"name":"Jenny",
+"salary":50000
+}
+]
+}); 
+
+
+function maxProduct(nums){
+    let current = 0;
+    let max = 0;
+    for (let i = 0; i<nums.length; i++){
+        for(let j = 0; j<nums.length; j++){
+            if (i==j){
+                continue;
+            }
+            current = nums[i]*nums[j]
+            if (nums.length < 3){
+                max = current;
+            }
+            if (max < current){
+                max = current;
+            }
+        }
+    }
+    console.log(max);
+}
+maxProduct([5, 20, 2, 6]) 
+maxProduct([10, -20, 0, 3]) 
+maxProduct([-1, 2]) 
+maxProduct([-1, 0, 2])
+maxProduct([-1,-2,0])
+
+
+function twoSum(nums, target){
+    let ans = [];
+    for (let i = 0; i<nums.length; i++){
+        for (let j= 0; j<nums.length; j++){
+            if (nums[i]+nums[j] == target && 
+            ans.includes(i) == false && ans.includes(j) == false){
+                ans.push(i);
+                ans.push(j)
+            }
+        }
+    }
+    return ans;
+}
+let result=twoSum([2, 11, 7, 15], 9);
+console.log(result);
+
+
+function maxZeros(nums){
+    let total_zero = 0;
+    let max = 0
+    for(let i=0; i<nums.length; i++){
+        if (nums[i] == 0){
+            total_zero +=1;
+            if (total_zero > max){
+        max = total_zero
+    }
+        }else{
+            total_zero = 0
+        }
+    }
+   
+    console.log(max);
+}
+maxZeros([0, 1, 0, 0]); 
+maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]); 
+maxZeros([1, 1, 1, 1, 1]); 
+maxZeros([0, 0, 0, 1, 1]) 
+
+</script>
+</html>
