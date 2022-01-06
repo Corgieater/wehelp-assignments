@@ -104,35 +104,35 @@ print(max_zeros([0, 0, 0, 1, 1]))
 print("\n====I tried to use algorithm, but only use python.====")
 print("====And I didn't do the optional :( ====\n")
 
-# Done, I tried my best :)
 
-
-def max_product(nums):
+def max_product(nums):  # Done, I tried my best :)
     length = len(nums)
-    negative_num = 0
-    new_list = []
-    for num in nums:  # check if there is negative num
-        if num < 0:
-            negative_num += 1
-        if negative_num > 2:  # if negative num > 2, there is no reason to check
-            break
-
-    while length > 1:
-        if negative_num < 2:  # if there is no negative num, use bubble sort
-            for i in range(length - 1):
-                if nums[i] > nums[i+1]:
-                    hold = nums[i]
-                    nums[i] = nums[i+1]
-                    nums[i+1] = hold
+    if length > 3:
+        max1 = max(nums)
+        nums.remove(max1)
+        max2 = max(nums)
+        min1 = min(nums)
+        nums.remove(min1)
+        min2 = min(nums)
+        nums.remove(min2)
+        total1 = max1*max2
+        total2 = min1*min2
+        if total1 > total2:
+            return total1
         else:
-            for i in range(length - 1):
-                if i+1 < length-1:
-                    total = nums[i]*nums[i+1]
-                    new_list.append(total)
-            return max(new_list)
+            return total2
+    elif length <= 2:
+        if length == 2:
+            return nums[0]*nums[1]
+        else:
+            return nums[0]
 
-        length -= 1
-    return nums[-1]*nums[-2]
+    else:
+        new_list = []
+        for i in range(length):
+            for j in range(1, length-1):
+                new_list.append(nums[i]*nums[j])
+                return max(new_list)
 
 
 print(max_product([5, 20, 2, 6]))
@@ -140,6 +140,7 @@ print(max_product([10, -20, 0, 3]))
 print(max_product([-1, 2]))
 print(max_product([-1, 0, 2]))
 print(max_product([-1, -2, 0]))
+print(max_product([-5, 1, 2, -2, 4]))
 
 
 # used hashmap and didn't even know what i was f writing:(
