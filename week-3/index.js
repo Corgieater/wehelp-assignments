@@ -95,7 +95,6 @@ function loadInfo(data, startIndex, endIndex) {
   const imgs = document.querySelectorAll(".card > img");
   const p = document.querySelectorAll(".description > p");
   for (let i = startIndex; i < endIndex; i++) {
-    console.log(i);
     let photo = data[i].file.split(/.jpg/i);
     let text = document.createTextNode(data[i].stitle);
     imgs[i].src = `${photo[0]}.jpg`;
