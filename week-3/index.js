@@ -68,7 +68,7 @@ loadBtn.addEventListener("click", async function () {
   if (endPoint >= dataLength) {
     loadBtn.classList.add("hide");
     const p = document.createElement("p");
-    const text = document.createTextNode("There is no pictures anymore!");
+    const text = document.createTextNode("There are no pictures anymore!");
     p.appendChild(text);
     btnArea.appendChild(p);
   }
