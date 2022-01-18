@@ -68,7 +68,7 @@ loadBtn.addEventListener("click", async function () {
   if (endPoint >= dataLength) {
     loadBtn.classList.add("hide");
     const p = document.createElement("p");
-    const text = document.createTextNode("There are no pictures anymore!");
+    const text = document.createTextNode("There is no picture any more!");
     p.appendChild(text);
     btnArea.appendChild(p);
   }
@@ -95,9 +95,9 @@ function loadInfo(data, startIndex, endIndex) {
   const imgs = document.querySelectorAll(".card > img");
   const p = document.querySelectorAll(".description > p");
   for (let i = startIndex; i < endIndex; i++) {
-    let photo = data[i].file.split(/.jpg/i);
+    let photo = data[i].file.split("https://");
     let text = document.createTextNode(data[i].stitle);
-    imgs[i].src = `${photo[0]}.jpg`;
+    imgs[i].src = `https://${photo[1]}`;
     p[i].appendChild(text);
   }
 }
