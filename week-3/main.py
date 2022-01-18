@@ -23,6 +23,7 @@ with urllib.request.urlopen(url) as response:
             latitude = main_data[i]["latitude"]
             li.append(latitude)
             photos = main_data[i]["file"]
-            photo = re.split(".jpg", photos, flags=re.IGNORECASE)
-            li.append(photo[0]+'.jpg')
+            li.append(photos)
+            photo = re.split("https://", photos, flags=re.IGNORECASE)
+            li.append("https://"+photo[1])
             writer.writerow(li)  # writerow expect an iterable object
