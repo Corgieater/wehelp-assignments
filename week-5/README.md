@@ -21,6 +21,7 @@ password 欄位必須是 test。接著繼續新增至少 4 筆隨意的資料。
 
 使用 SELECT 指令取得 member 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，
 由近到遠排序。( 並非編號 2、3、4 的資料，而是排序後的第 2 ~ 4 筆資料 )
+
 ![](https://i.imgur.com/kLMywlG.png)
 
 <hr>
