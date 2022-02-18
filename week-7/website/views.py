@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request
-import jwt
 
 
 views = Blueprint(
@@ -15,11 +14,10 @@ def home():
     return render_template('home.html')
 
 
-@views.route('/member/')
+@views.route('/member/') # do a dynamic route next time, make it multiple users
 def member():
-    from .auth import user
     if session['username']:
-        return render_template('member.html', user=user)
+        return render_template('member.html', user=session['username'])
     else:
         return redirect(url_for('views.home'))
 

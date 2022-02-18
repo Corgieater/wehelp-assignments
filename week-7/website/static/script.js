@@ -16,7 +16,6 @@ if (usernameRequestBt) {
       `http://127.0.0.1:3000/api/members?username=${userInput}`
     );
     const data = await res.json();
-    console.log(data);
     const userInfo = document.querySelector("#userInfo");
     if (data.data == null) {
       userInfo.textContent = "查無此使用者";

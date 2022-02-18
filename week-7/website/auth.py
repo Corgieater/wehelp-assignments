@@ -1,9 +1,6 @@
 from flask import Blueprint, request, redirect, url_for, flash, session
 from .models import addUserToTable, checkUsername, getUserId, getUserInfo, changeName
 
-user = None
-token = None
-
 auth = Blueprint(
     'auth',
     __name__,
@@ -41,11 +38,11 @@ def signin():
         if userName == '' or userPassword == '':
             return redirect('error/?message=帳號或密碼空白')
 
-        global user
         user = getUserId(userName, userPassword)
 
         if user:
             session['username'] = user
+
             return redirect(url_for('views.member'))
 
         else:
@@ -66,16 +63,16 @@ def getUserJsonInfo():
     data = getUserInfo(username)
     return data
 
+# delete all global and use session.get
 
 @auth.route('/api/member', methods=['POST'])
 def updateName():
-    global user
     req = request.headers.get('Content-Type')
     if req == 'application/json':
         json = request.json
         newName = json['name']
-        if user in session['username']:
-            changeName(newName, user)
+        changeName(newName, session.get('username'))
+
         data = {"ok": True}
         return data
     else:
