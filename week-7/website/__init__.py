@@ -2,12 +2,6 @@ from flask import Flask
 import mysql.connector
 from mysql.connector import pooling
 
-# mydb = mysql.connector.connect(
-#     host='localhost',
-#     user='root',
-#     password='123456',
-#     database='website'
-# )
 connectionPool = mysql.connector.pooling.MySQLConnectionPool(
     pool_name='myPool',
     pool_size=3,
@@ -31,10 +25,8 @@ def createApp():
     app.config['JSON_AS_ASCII'] = False
     from .views import views
     from .auth import auth
-    from .models import createTable
 
     app.register_blueprint(views)
     app.register_blueprint(auth)
 
-    createTable()
     return app

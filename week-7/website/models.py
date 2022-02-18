@@ -9,18 +9,6 @@ models = Blueprint(
 
 bcrypt = Bcrypt()
 
-def createTable():
-    mycursor.execute('select table_schema as database_name, '
-                   'table_name from information_schema.tables where table_name = "member2";')
-    searchTable = mycursor.fetchone()
-    if searchTable is None:  #if the table exists, do not create it again
-        mycursor.execute('CREATE TABLE `member2` (`id` INT PRIMARY KEY AUTO_INCREMENT,'
-                       '`name` VARCHAR(255) NOT NULL UNIQUE,'
-                       '`username` VARCHAR(255) NOT NULL UNIQUE,'
-                       '`password` VARCHAR(255) NOT NULL)')
-    connection.commit()
-
-
 def addUserToTable(name, username, password):
     insertExecution = ('INSERT INTO member2 values(DEFAULT, %s, %s, %s)')
     hashedPassword = bcrypt.generate_password_hash(password=password)
