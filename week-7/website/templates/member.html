@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {%block title%}Member{% endblock %} {% block header
+%}歡迎光臨，這是會員頁{% endblock %} {% block message %}{% endblock %} {% block
+content%}
+<div class="message" id="">
+  <h2><span id="welcomeName">{{user}}</span>，歡迎登入系統</h2>
+
+  <a href="/signout">登出</a>
+  <br />
+  <br />
+  <div class="main">
+    <h3>查詢會員姓名</h3>
+    <input type="text" id="username" />
+    <button id="usernameRequestBt">查詢</button>
+    <h3 id="userInfo"></h3>
+  </div>
+  <br />
+  <br />
+  <div class="main">
+    <h3>更新我的姓名</h3>
+    <input type="text" id="name" />
+    <button id="nameUpdateBt">更新</button>
+    <h3 id="nameUpdated"></h3>
+  </div>
+</div>
+{% endblock %}

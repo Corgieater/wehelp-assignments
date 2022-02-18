@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static',
+    filename='style.css')}}"
+    />
+    <title>{% block title %}Base{% endblock %}</title>
+  </head>
+  <body>
+    <div class="main">
+      <header>
+        <h1>{% block header %}Content{% endblock %}</h1>
+      </header>
+      {% block message %} {% with messages =
+      get_flashed_messages(with_categories=true) %} {%if messages%} {% for
+      category, message in messages %} {% if category == 'success'%}
+      <div class="messageBox success">
+        <button class="close" id="close">X</button>
+        <h3>{{ message }}</h3>
+      </div>
+      {% else %}
+      <div class="messageBox error">
+        <button class="close" id="close">X</button>
+        <h3>{{ message }}</h3>
+      </div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %} {% block
+      content%}
+      <div class="formStyle">
+        <h2>註冊帳號</h2>
+        <form
+          action="{{ url_for('auth.signup')}}"
+          method="POST"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <div>
+            <label for="signupName">姓名</label>
+            <input type="text" id="signupName" name="signupName" />
+          </div>
+          <div>
+            <label for="signupAccount">帳號</label>
+            <input type="text" id="signupAccount" name="signupAccount" />
+          </div>
+          <div>
+            <label for="signupPassword1">密碼</label>
+            <input
+              type="password"
+              id="signupPassword1"
+              name="signupPassword1"
+            />
+          </div>
+          <div>
+            <label for="signupPassword2">確認</label>
+            <input
+              type="password"
+              id="signupPassword2"
+              name="signupPassword2"
+            />
+            <p class="confirm">請再次輸入密碼</p>
+          </div>
+          <button>註冊</button>
+        </form>
+      </div>
+      <hr />
+      <div class="formStyle">
+        <h2>登入系統</h2>
+        <form
+          action="{{ url_for('auth.signin')}}"
+          method="POST"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <div>
+            <label for="account">帳號</label>
+            <input type="text" id="account" name="account" />
+          </div>
+          <div>
+            <label for="password">密碼</label>
+            <input type="password" id="password" name="password" />
+          </div>
+          <button>登入</button>
+        </form>
+      </div>
+    </div>
+    {% endblock%}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
