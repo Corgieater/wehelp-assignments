@@ -1,12 +1,15 @@
 const closeBt = document.querySelector("#close");
 const usernameRequestBt = document.querySelector("#usernameRequestBt");
 const nameUpdateBt = document.querySelector("#nameUpdateBt");
+const signinForm = document.querySelector("#signinForm");
+
+function hideMessageBox() {
+  const messageBox = document.querySelector(".messageBox");
+  messageBox.classList.add("hide");
+}
 
 if (closeBt) {
-  closeBt.addEventListener("click", function () {
-    const messageBox = document.querySelector(".messageBox");
-    messageBox.classList.add("hide");
-  });
+  closeBt.addEventListener("click", hideMessageBox);
 }
 
 if (usernameRequestBt) {
@@ -50,3 +53,33 @@ if (nameUpdateBt) {
     }
   });
 }
+
+signinForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const userAccountInput = document.querySelector("#account");
+  const userPasswordInput = document.querySelector("password");
+  let messageBox = document.querySelector(".messageBox");
+  if (messageBox) {
+    messageBox.remove();
+  }
+
+  if (userAccountInput.value == "" || userPasswordInput == "") {
+    const div = document.createElement("div");
+    const bt = document.createElement("button");
+    const h3 = document.createElement("h3");
+    const main = document.querySelector(".main");
+    bt.classList.add("close");
+    div.classList.add("messageBox");
+    div.classList.add("error");
+    h3.append("帳號或密碼空白");
+    bt.append("X");
+    bt.setAttribute("id", "close");
+    bt.addEventListener("click", hideMessageBox);
+    div.append(bt);
+    div.append(h3);
+    main.append(div);
+  } else {
+    console.log("nice");
+    // ajax? create a route to check from database
+  }
+});
